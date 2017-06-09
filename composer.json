@@ -1,0 +1,29 @@
+{
+    "name": "bentools/guzzle-duration-middleware",
+    "description": "A GuzzleHTTP Middleware that adds a X-Request-Duration header to all responses to monitor response times.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bpolaszek",
+            "email": "bpolaszek@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3",
+        "phpunit/phpunit": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "BenTools\\GuzzleHttp\\Middleware\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "vendor/symfony/var-dumper/Resources/functions/dump.php"
+        ]
+    }
+}
