@@ -8,14 +8,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use BenTools\GuzzleHttp\Middleware\DurationHeaderMiddleware;
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\CurlHandler;
-use GuzzleHttp\HandlerStack;
 
+$client = new Client();
 $middleware = new DurationHeaderMiddleware($headerName = 'X-Request-Duration'); // header name is optional, this is the default value
-$stack = new HandlerStack();
-$stack->setHandler(new CurlHandler());
-$stack->push($middleware);
-$client = new Client(['handler' => $stack]);
+$client->getConfig('handler')->push($middleware);
 
 $response = $client->get('http://httpbin.org/delay/1');
 var_dump((float) $response->getHeaderLine('X-Request-Duration')); // 1.177
